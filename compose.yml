@@ -1,0 +1,16 @@
+secrets:
+  SECRET_SECRETS_FILE:
+    file: ./secret_secret_file.txt
+services:
+  web:
+    env_file:
+      - .env
+    build: .
+    ports:
+      - "8080:8080"
+    secrets:
+      - SECRET_SECRETS_FILE
+    entrypoint: entrypoint.sh
+    environment:
+      - SECRET_HARDCODED=Hardcoded
+      - SECRET_BASH_WRAPPER=${BASH_SECRET}
